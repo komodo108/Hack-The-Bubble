@@ -10,6 +10,9 @@ public class Player extends Observable implements IPlayer {
     private int x = 1;
     private int y = 22;
     private IMap map;
+    private int jumps = 0;
+    private int maxJumps = 6;
+
 
     public Player(IMap map){
         this.map = map;
@@ -45,12 +48,12 @@ public class Player extends Observable implements IPlayer {
     @Override
     public boolean checkWall(int x, int y) {
         boolean thatsAWall = false;
-        /*if (map[x][y] == wall || map[x][y] == floor) {
+        if (map.getMap()[x][y].getChar(map.getTileAt(x,y)) == Block.wall || map.getMap()[x][y].getChar(map.getTileAt(x,y)) == Block.floor) {
             thatsAWall = true;
         }
         else {
             thatsAWall = false;
-        }*/
+        }
         return thatsAWall;
     }
 
@@ -61,7 +64,7 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public int getJumps() {
-        return 0;
+        return jumps;
     }
 
     @Override
@@ -78,22 +81,24 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public boolean hasLost() {
-        boolean arrowToTheKnee;
-        if (map[x][y+1].getChar() == Block.lava || map[x][y+1].getChar() == Block.spike){
-            arrowToTheKnee = true;
+        boolean arrowToTheKnee = false;
+        try {
+            if (map.getMap()[x][y+1].getChar(map.getTileAt(x,(y+1))) == Block.lava || map.getMap()[x][y+1].getChar(map.getTileAt(x,(y+1))) == Block.spike) {
+                arrowToTheKnee = true;
 
-        }else if(map[x][y-1].getChar() == Block.lava || map[x][y-1].getChar() == Block.spike){
-            arrowToTheKnee = true;
+            } else if (map.getMap()[x][y-1].getChar(map.getTileAt(x,(y-1))) == Block.lava || map.getMap()[x][y-1].getChar(map.getTileAt(x,(y-1))) == Block.spike) {
+                arrowToTheKnee = true;
 
-        }else if(map[x+1][y].getChar() == Block.lava || map[x+1][y].getChar() == Block.spike){
-            arrowToTheKnee = true;
+            } else if (map.getMap()[x+1][y].getChar(map.getTileAt((x+1),y)) == Block.lava || map.getMap()[x+1][y].getChar(map.getTileAt((x+1),y)) == Block.spike) {
+                arrowToTheKnee = true;
 
-        }else if (map[x-1][y].getChar() == Block.lava || map[x-1][y].getChar() == Block.spike){
-            arrowToTheKnee = true;
+            } else if (map.getMap()[x-1][y].getChar(map.getTileAt((x-1),y)) == Block.lava || map.getMap()[x-1][y].getChar(map.getTileAt((x-1),y)) == Block.spike) {
+                arrowToTheKnee = true;
 
-        } else {
-            arrowToTheKnee = false;
-        }
+            } else {
+                arrowToTheKnee = false;
+            }
+        } catch(ArrayIndexOutOfBoundsException e){ }
 
         return arrowToTheKnee;
     }
