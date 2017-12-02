@@ -96,7 +96,7 @@ public class Player extends Observable implements IPlayer {
                 for(int j = 0; j < map.getMap()[i].length; j++) {
                     if(map.getTileAt(i, j).type == Block.cute1) {
                         map.updateTile(i, j, new Block(Block.empty));
-                        map.updateTile(i, (j-1), new Block(Block.enemy));
+                        map.updateTile(i, j, new Block(Block.enemy));
                     }
                 }
             }
