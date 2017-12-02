@@ -59,4 +59,23 @@ public class Block {
         }
         return ERROR;
     }
+
+    public boolean isSolid() {
+        switch (type) {
+            case empty: return false;
+            case floor: return true;
+            case lava: return false;
+            case wall: return true;
+            case spike: return true;
+            case door: return true;
+            case finish: return false;
+            case key: return true;
+            case lever1: return true;
+            case lever2: return true;
+            case upgrade: return true;
+            case blockage1: return true;
+            case blockage2: return true;
+        }
+        return false;
+    }
 }

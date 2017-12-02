@@ -22,17 +22,13 @@ public class Player extends Observable implements IPlayer {
     @Override
     public void move(char direction) {
         try {
-            if (direction != 'd') {
-                if (jumps > 0) jumps -= 1;
-            }
             switch (direction) {
                 case 'u':
-                    if (!(checkWall(x, (y - 1)))) {
-                        if (jumps > 0) {
-                            y--;
-                        } else {
-                            y++;
-                        }
+                    if(jumps != 0) {
+                        jumps--;
+                        if (!(checkWall(x, (y - 1)))) y--;
+                    } else {
+                        if(!(checkWall(x, (y + 1)))) y++;
                     }
                     break;
                 case 'd':
@@ -41,15 +37,21 @@ public class Player extends Observable implements IPlayer {
                     }
                     break;
                 case 'l':
-                    if (!(checkWall((x - 1), y))) {
-                        x--;
-                        if (jumps == 0) y++;
+                    if(jumps != 0) {
+                        jumps--;
+                        if (!(checkWall((x - 1), y))) x--;
+                    } else  {
+                        if (!(checkWall((x - 1), y))) x--;
+                        if(!(checkWall(x, (y + 1)))) y++;
                     }
                     break;
                 case 'r':
-                    if (!(checkWall((x + 1), y))) {
-                        x++;
-                        if (jumps == 0) y++;
+                    if(jumps != 0) {
+                        jumps--;
+                        if (!(checkWall((x + 1), y))) x++;
+                    } else {
+                        if (!(checkWall((x + 1), y))) x++;
+                        if(!(checkWall(x, (y + 1)))) y++;
                     }
                     break;
             }
@@ -80,22 +82,22 @@ public class Player extends Observable implements IPlayer {
                 }
             }
         } else if(map.getTileAt(x,y).type == Block.door) {
-            if(hasKey) {
+            if (hasKey) {
                 map.updateTile(x, y, new Block(Block.empty));
                 return false;
             } else return true;
-        } else if(map.getTileAt(x, y + 1).type == Block.floor) {
-            jumps = maxJumps;
-            return false;
-        } else if(map.getTileAt(x, y).type == Block.empty) {
-            return false;
         } else if (map.getTileAt(x, y).type == Block.spike) {
             jumps = 0;
             maxJumps = 0;
             return true;
+        } else if(map.getTileAt(x, y + 1).type == Block.floor) {
+            jumps = maxJumps;
+            //return true;
+        } else if(map.getTileAt(x, y).type == Block.empty) {
+            return false;
         }
 
-        return true;
+        return (map.getTileAt(x, y).isSolid());
     }
 
     @Override

@@ -23,7 +23,7 @@ public class KeyListen implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        if(!player.hasLost()) {
+        if(!player.hasLost() && !player.hasWon()) {
             switch (keyEvent.getKeyCode()) {
                 case VK_LEFT:
                     player.move('l');

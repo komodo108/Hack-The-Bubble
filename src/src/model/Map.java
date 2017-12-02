@@ -10,11 +10,6 @@ public class Map extends Observable implements IMap {
     private int size = 25;
     private Block[][] map = new Block[size][size];
 
-    //return size
-    int getSize(){
-        return size;
-    }
-
     @Override
     public Block[][] getMap() {
         return map;
@@ -95,13 +90,7 @@ public class Map extends Observable implements IMap {
                     case Block.blockage2:
                         map[j][i] = new Block(Block.blockage2);
                         break;
-
-
-
                 }
-
-
-
             }
         }
 
@@ -112,21 +101,4 @@ public class Map extends Observable implements IMap {
         }
 
     }
-
-    // this should turn char array to block array
-
-
-
-
 }
-
-        /*
-        * floor tile
-        * empty
-        * player tile
-        *
-        *
-        *
-        *
-        *
-        * */
