@@ -3,6 +3,7 @@ package shared;
 public class Block {
 
     /**
+     * EMPTY ' '
      * FLOOR 'f'
      * LAVA 'l'
      * WALL 'w'
@@ -12,6 +13,7 @@ public class Block {
      * key 'k'
      */
 
+    public static char empty = ' ';
     public static char floor = 'f';
     public static char lava = 'l';
     public static char wall = 'w';
