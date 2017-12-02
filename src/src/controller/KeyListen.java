@@ -26,7 +26,7 @@ public class KeyListen implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        if(!player.hasLost() && !player.hasWon()) {
+        if(!player.hasLost() && !player.hasWon() && !player.isInteract()) {
             switch (keyEvent.getKeyCode()) {
                 case VK_LEFT:
                     player.move('l');
@@ -50,6 +50,14 @@ public class KeyListen implements KeyListener {
             if(mapID < 4) {
                 map.readMapFromFile("Map" + mapID + ".txt");
                 player.moveTo(1, 22);
+            }
+        }
+
+        if(player.isInteract()) {
+            switch (keyEvent.getKeyCode()) {
+                case VK_ENTER:
+                    player.setInteract(false);
+                    break;
             }
         }
     }

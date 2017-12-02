@@ -14,6 +14,9 @@ public class Player extends Observable implements IPlayer {
     private int enemy = 0;
 
     private boolean hasKey = false;
+    private boolean interact = false;
+    private String text = "";
+
     private int maxJumps = 6;
     private int jumps = maxJumps;
 
@@ -86,9 +89,11 @@ public class Player extends Observable implements IPlayer {
     @Override
     public boolean checkWall(int x, int y) {
         if(map.getTileAt(x, y).type == Block.cute1) {
-
+            text = "test1";
+            interact = true;
         } else if(map.getTileAt(x, y).type == Block.cute2) {
-
+            text = "test2";
+            interact = true;
         } else if(map.getTileAt(x, y).type == Block.upgrade) {
             maxJumps += 2;
             map.updateTile(x, y, new Block(Block.empty));
@@ -201,4 +206,19 @@ public class Player extends Observable implements IPlayer {
         notifyObservers();
     }
 
+    public String getToSay() {
+        return text;
+    }
+
+    public boolean isInteract() {
+        return interact;
+    }
+
+    public void setInteract(boolean interact) {
+        this.interact = interact;
+        text = "";
+
+        setChanged();
+        notifyObservers();
+    }
 }
