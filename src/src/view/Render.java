@@ -55,8 +55,8 @@ public class Render extends JPanel {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(25, 25, size.width-50, 50);
             g.setColor(new Color(255, 255, 255));
-            g.setFont(new Font("Courier", 1, 40));
-            g.drawString(text, 30, 30);
+            g.setFont(new Font("Courier", 1, 20));
+            g.drawString(text, 30, 57);
         }
     }
 
@@ -108,13 +108,13 @@ public class Render extends JPanel {
                         g.drawImage(loader.getSprites(2), x * 32, y * 32, null);
                         break;
                     case Block.cute1:
-                        g.drawImage(loader.getSprites(11), x * 32, y * 32, null);
+                        g.drawImage(loader.getSprites(19), x * 32, y * 32, null);
                         break;
                     case Block.cute2:
-                        g.drawImage(loader.getSprites(12), x * 32, y * 32, null);
+                        g.drawImage(loader.getSprites(20), x * 32, y * 32, null);
                         break;
                     case Block.enemy:
-                        g.drawImage(loader.getSprites(14), x * 32, y * 32, null);
+                        g.drawImage(loader.getSprites(22), x * 32, y * 32, null);
                         break;
 
                 }

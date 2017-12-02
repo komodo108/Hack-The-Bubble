@@ -68,11 +68,11 @@ public class Player extends Observable implements IPlayer {
                         if(!isDone) {
                             if (enemy == 0) {
                                 map.updateTile(i, j, new Block(Block.empty));
-                                map.updateTile((i - 1), j, new Block(Block.enemy));
+                                map.updateTile(i, (j - 1), new Block(Block.enemy));
                                 enemy++;
                             } else if (enemy == 1) {
                                 map.updateTile(i, j, new Block(Block.empty));
-                                map.updateTile((i + 1), j, new Block(Block.enemy));
+                                map.updateTile(i, (j + 1), new Block(Block.enemy));
                                 enemy--;
                             }
                             isDone = true;
@@ -89,10 +89,19 @@ public class Player extends Observable implements IPlayer {
     @Override
     public boolean checkWall(int x, int y) {
         if(map.getTileAt(x, y).type == Block.cute1) {
-            text = "test1";
+            text = "I am a cute thing";
             interact = true;
+
+            for(int i = 0; i < map.getMap().length; i++) {
+                for(int j = 0; j < map.getMap()[i].length; j++) {
+                    if(map.getTileAt(i, j).type == Block.cute1) {
+                        map.updateTile(i, j, new Block(Block.empty));
+                        map.updateTile(i, (j-1), new Block(Block.enemy));
+                    }
+                }
+            }
         } else if(map.getTileAt(x, y).type == Block.cute2) {
-            text = "test2";
+            text = "I am not a cute thing";
             interact = true;
         } else if(map.getTileAt(x, y).type == Block.upgrade) {
             maxJumps += 2;
