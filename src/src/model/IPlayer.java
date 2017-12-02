@@ -29,4 +29,15 @@ public interface IPlayer {
      */
     int getJumps();
 
+    /**
+     * Set true if the player has won
+     * @return true if win
+     */
+    boolean hasWon();
+
+    /**
+     * Set true if the player has lost
+     * @return true if lost
+     */
+    boolean hasLost();
 }

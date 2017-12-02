@@ -33,6 +33,10 @@ public class Render extends JPanel {
         super.paintComponent(g);
         renderMap(g, map.getMap());
         renderPlayer(g, map.getMap());
+        renderJumps(g);
+
+        if(player.hasLost()) renderWin(g);
+        else renderWin(g);
     }
 
     @Deprecated
@@ -106,7 +110,27 @@ public class Render extends JPanel {
     public void renderJumps(Graphics g) {
         g.setFont(new Font("Courier New", 1, 8));
         g.setColor(new Color(205, 205, 0));
-        g.drawString(player.get);
+        g.drawString(String.valueOf(player.getJumps()), 2, 2);
+    }
+
+    public void renderWin(Graphics g) {
+        String s = "You Win!";
+
+        g.setColor(new Color(255, 215, 0, 80));
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", 1, 24));
+        g.drawString(s, size.width / 2 - ((s.length() * 24) / 4), size.height / 2 - 12);
+    }
+
+    public void renderLoss(Graphics g) {
+        String s = "You Lose!";
+
+        g.setColor(new Color(255, 0, 0, 160));
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", 1, 24));
+        g.drawString(s, size.width / 2 - ((s.length() * 24) / 4), size.height / 2 - 12);
     }
 
 }
