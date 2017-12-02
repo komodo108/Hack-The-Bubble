@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.util.Observer;
 
 public interface IPlayer {
 
@@ -40,4 +41,10 @@ public interface IPlayer {
      * @return true if lost
      */
     boolean hasLost();
+
+    /**
+     * Adds o as an observer
+     * @param o an Observer
+     */
+    void addAnObserver(Observer o);
 }

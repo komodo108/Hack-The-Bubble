@@ -100,7 +100,7 @@ public class Render extends JPanel {
     public void renderPlayer(Graphics g, Block[][] blocks) {
         for(int x = 0; x < blocks.length; x++) {
             for (int y = 0; y < blocks[x].length; y++) {
-                if(player.getPos().height == x && player.getPos().width == y) {
+                if(player.getPos().width == x && player.getPos().height == y) {
                     g.drawImage(loader.getSprites(0), x * 32, y * 32, null);
                 }
             }

@@ -4,10 +4,11 @@ import shared.Block;
 
 import java.awt.*;
 import java.util.Observable;
+import java.util.Observer;
 
 public class Player extends Observable implements IPlayer {
     private int x = 1;
-    private int y = 13;
+    private int y = 22;
     private IMap map;
 
     public Player(IMap map){
@@ -80,5 +81,8 @@ public class Player extends Observable implements IPlayer {
         return false;
     }
 
+    public void addAnObserver(Observer o) {
+        addObserver(o);
+    }
 
 }

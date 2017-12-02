@@ -27,6 +27,7 @@ public class Frame implements Observer {
         this.player = new Player(map);
 
         makeFrame();
+        this.player.addAnObserver(this);
     }
 
     public void makeFrame() {
