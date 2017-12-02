@@ -7,14 +7,8 @@ import java.io.*;
 import java.util.Observable;
 
 public class Map extends Observable implements IMap {
-    private int size = 25;
+    private int size = 15;
     private Block[][] map = new Block[size][size];
-    private char[][] importedMap = new char [size][size];
-
-
-
-
-
 
     //return size
     int getSize(){
@@ -41,7 +35,6 @@ public class Map extends Observable implements IMap {
         try {
             BufferedReader mapReader = new BufferedReader(new FileReader(pathname));
 
-
             //i = y; j = x
         String line = "";
         for(int i = 0; (line = mapReader.readLine()) != null; i++) {
@@ -52,40 +45,47 @@ public class Map extends Observable implements IMap {
 
                 switch(chars[j]) {
                     case Block.empty:
-                        map[j][i] = Block.empty;
+                        map[j][i] = new Block(Block.empty);
                         break;
 
                     case Block.floor:
-                        map[j][i] = Block.floor;
+                        map[j][i] = new Block(Block.floor);
                         break;
 
                     case Block.lava:
-                        map[j][i] = Block.lava;
+                        map[j][i] = new Block(Block.lava);
                         break;
 
                     case Block.wall:
-                        map[j][i] = Block.wall;
+                        map[j][i] = new Block(Block.wall);
                         break;
 
                     case Block.spike:
-                        map[j][i] = Block.spike;
+                        map[j][i] = new Block(Block.spike);
                         break;
 
                     case Block.door:
-                        map[j][i] = Block.door;
+                        map[j][i] = new Block(Block.door);
                         break;
 
                     case Block.finish:
-                        map[j][i] = Block.finish;
+                        map[j][i] = new Block(Block.finish);
                         break;
 
                     case Block.key:
-                        map[j][i] = Block.key;
+                        map[j][i] = new Block(Block.key);
+                        break;
+
+                    case Block.lever:
+                        map[j][i] = new Block(Block.lever);
                         break;
 
 
 
                 }
+                
+
+
             }
         }
 
@@ -96,6 +96,12 @@ public class Map extends Observable implements IMap {
         }
 
     }
+
+    // this should turn char array to block array
+
+
+
+
 }
 
         /*
