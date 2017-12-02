@@ -73,7 +73,6 @@ public class Map extends Observable implements IMap {
                         map[j][i] = new Block(Block.lever1);
                         break;
 
-
                     case Block.lever2:
                         map[j][i] = new Block(Block.lever2);
                         break;
