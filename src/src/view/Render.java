@@ -1,6 +1,9 @@
 package view;
 
+import shared.Block;
+
 import java.awt.*;
+import java.util.Map;
 
 public class Render {
 
@@ -16,6 +19,8 @@ public class Render {
         g.drawRect(size.height);
     }
 
+    public void renderMap(Block[][] map) {
 
+    }
 
 }
