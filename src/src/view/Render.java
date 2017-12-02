@@ -23,9 +23,8 @@ public class Render extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        doTest(g);
-        //renderMap(g, map.getMap());
-        //renderPlayer(g, player.getPos());
+        renderMap(g, map.getMap());
+        renderPlayer(g, player.getPos());
     }
 
     @Deprecated
@@ -33,15 +32,21 @@ public class Render extends JPanel {
         //Renders text in a textbox
     }
 
-    @Deprecated
-    public void doTest(Graphics g) {
-        g.setFont(new Font("Arial", 1, 24));
-        g.setColor(new Color(255, 255, 255));
-        g.drawString("hack_the_bubble", 20, 20);
-    }
-
     public void renderMap(Graphics g, Block[][] blocks) {
+        for(int i = 0; i < blocks.length; i++) {
+            for(int j = 0; j < blocks[i].length; j++) {
+                char block = blocks[i][j];
+                switch (blocks[i][j]) {
+                    case Block.empty:
+                        break;
+                    case Block.door:
+                        break;
+                    case Block.finish:
+                        break;
 
+                }
+            }
+        }
     }
 
     public void renderPlayer(Graphics g, Dimension playerPos) {
