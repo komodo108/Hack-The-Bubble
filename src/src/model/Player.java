@@ -10,7 +10,7 @@ public class Player extends Observable implements IPlayer {
     private int y = 13;
     private IMap map;
 
-    Player(IMap map){
+    public Player(IMap map){
         this.map = map;
     }
 
@@ -43,19 +43,34 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public boolean checkWall(int x, int y) {
-        boolean thatsAWall;
-        if (map[x][y] == wall || map[x][y] == floor) {
+        boolean thatsAWall = false;
+        /*if (map[x][y] == wall || map[x][y] == floor) {
             thatsAWall = true;
         }
         else {
             thatsAWall = false;
-        }
+        }*/
         return thatsAWall;
     }
 
     @Override
     public Dimension getPos() {
         return null;
+    }
+
+    @Override
+    public int getJumps() {
+        return 0;
+    }
+
+    @Override
+    public boolean hasWon() {
+        return false;
+    }
+
+    @Override
+    public boolean hasLost() {
+        return false;
     }
 
 

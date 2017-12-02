@@ -3,6 +3,8 @@ package view;
 import controller.KeyListen;
 import model.IMap;
 import model.IPlayer;
+import model.Map;
+import model.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +21,9 @@ public class Frame implements Observer {
     private IMap map;
 
     public Frame() {
+        this.map = new Map();
+        this.player = new Player(map);
+
         makeFrame();
     }
 
