@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.Observable;
 
 public class Map extends Observable implements IMap {
+    private int mapID = 1;
     private int size = 25;
     private Block[][] map = new Block[size][size];
 
