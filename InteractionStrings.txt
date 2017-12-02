@@ -5,7 +5,9 @@ interaction with door (if player has no key): "An imposing door looms in front o
 interaction with key: "Something glints on the floor in the dim light. There is a key."
 interaction with door (if player has key): "Silently, the door swings open."
 
-interaction with upgrade: "You feel yourself grow stronger."
+interaction with first upgrade: "A soul..? You reach out to it and feel a rush of power. The soul disappears. It matters"
+no more..."
+interaction with all upgrades after first: "You feel yourself grow stronger."
 interaction with exit: "Finding an exit, you leave the area behind and make your escape."
 
 interaction with deadly fulff: "What are you looking at you mangled lizard?" *player dies*
