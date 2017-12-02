@@ -131,16 +131,18 @@ public class Player extends Observable implements IPlayer {
     public boolean hasLost() {
         boolean arrowToTheKnee = false;
         try {
-            if (map.getTileAt(x, y+1).type == Block.lava || map.getTileAt(x, y+1).type == Block.spike) {
+            if(map.getTileAt(x, y).type == Block.lava) arrowToTheKnee = true;
+
+            if (map.getTileAt(x, y+1).type == Block.spike) {
                 arrowToTheKnee = true;
 
-            } else if (map.getTileAt(x, y-1).type == Block.lava || map.getTileAt(x, y-1).type == Block.spike) {
+            } else if (map.getTileAt(x, y-1).type == Block.spike) {
                 arrowToTheKnee = true;
 
-            } else if (map.getTileAt(x+1, y).type == Block.lava || map.getTileAt(x+1, y).type == Block.spike) {
+            } else if (map.getTileAt(x+1, y).type == Block.spike) {
                 arrowToTheKnee = true;
 
-            } else return (map.getTileAt(x-1, y).type == Block.lava || map.getTileAt(x-1, y).type == Block.spike);
+            } else return (map.getTileAt(x-1, y).type == Block.spike);
         } catch(ArrayIndexOutOfBoundsException e){
             return true;
         }
