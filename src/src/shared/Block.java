@@ -35,7 +35,12 @@ public class Block {
     public final static char blockage1 = 'B';
     public final static char blockage2 = 'C';
 
-    public final static char ERROR = 'E';
+    public final static char enemy1 = 'E';
+    public final static char enemy2 = 'M';
+    public final static char cute1 = 'I';
+    public final static char cute2 = 'T';
+
+    public final static char ERROR = 'X';
 
     public Block(char type) {
         this.type = type;
@@ -56,6 +61,12 @@ public class Block {
             case upgrade: return upgrade;
             case blockage1: return blockage1;
             case blockage2: return blockage2;
+            case enemy1: return enemy1;
+            case enemy2: return enemy2;
+            case cute1: return cute1;
+            case cute2: return cute2;
+
+
         }
         return ERROR;
     }
@@ -75,6 +86,11 @@ public class Block {
             case upgrade: return true;
             case blockage1: return true;
             case blockage2: return true;
+            case enemy1: return false;
+            case enemy2: return false;
+            case cute1: return false;
+            case cute2: return false;
+
         }
         return false;
     }

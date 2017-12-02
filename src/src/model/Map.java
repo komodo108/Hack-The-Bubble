@@ -90,6 +90,18 @@ public class Map extends Observable implements IMap {
                     case Block.blockage2:
                         map[j][i] = new Block(Block.blockage2);
                         break;
+                    case Block.enemy1:
+                        map[j][i] = new Block(Block.enemy1);
+                        break;
+                    case Block.enemy2:
+                        map[j][i] = new Block(Block.enemy2);
+                        break;
+                    case Block.cute1:
+                        map[j][i] = new Block(Block.cute1);
+                        break;
+                    case Block.cute2:
+                        map[j][i] = new Block(Block.cute2);
+                        break;
                 }
             }
         }
