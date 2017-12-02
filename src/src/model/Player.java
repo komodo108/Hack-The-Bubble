@@ -78,7 +78,24 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public boolean hasLost() {
-        return false;
+        boolean arrowToTheKnee;
+        if (map[x][y+1].getChar() == Block.lava || map[x][y+1].getChar() == Block.spike){
+            arrowToTheKnee = true;
+
+        }else if(map[x][y-1].getChar() == Block.lava || map[x][y-1].getChar() == Block.spike){
+            arrowToTheKnee = true;
+
+        }else if(map[x+1][y].getChar() == Block.lava || map[x+1][y].getChar() == Block.spike){
+            arrowToTheKnee = true;
+
+        }else if (map[x-1][y].getChar() == Block.lava || map[x-1][y].getChar() == Block.spike){
+            arrowToTheKnee = true;
+
+        } else {
+            arrowToTheKnee = false;
+        }
+
+        return arrowToTheKnee;
     }
 
     public void addAnObserver(Observer o) {
