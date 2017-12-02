@@ -55,7 +55,7 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public Dimension getPos() {
-        return null;
+        return new Dimension(x,y);
     }
 
     @Override
@@ -65,7 +65,14 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public boolean hasWon() {
-        return false;
+        boolean canIHazWin;
+        if(map.getMap()[getPos().width][getPos().height] == Block.finish) {
+            canIHazWin = true;
+        }
+        else {
+            canIHazWin = false;
+        }
+        return canIHazWin;
     }
 
     @Override
