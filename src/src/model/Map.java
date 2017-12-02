@@ -1,19 +1,19 @@
 import model.IMap;
+import shared.Block;
 
 import java.util.Observable;
 
 public class Map extends Observable implements IMap {
     private int size = 25;
+    private Block[][] map = new Block[size][size];
     private char[][] board = new char[size][size];
     private final char FREE = '.';
     private final char INVALID = ' ';
-    private final char FOX = '*';
+    private final char  = '*';
     private final char GOOSE = 'o';
 
 
-
-
-    public void makeBoard(){
+    private void makeBoard(){
         // this will set the initial empty board
         //defines valid and invalid
 
@@ -58,7 +58,7 @@ public class Map extends Observable implements IMap {
     }
 
 
-    public void printBoard(){
+    void printBoard(){
         //this will print the board
         for (int row = 0; row < size; row++){
             for (int col = 0; col < size; col++){
@@ -68,13 +68,31 @@ public class Map extends Observable implements IMap {
         }
     }
 
+    void
+
+
+
 
     //return size
-    public int getSize(){
+    int getSize(){
         return size;
     }
 
-        }
+    @Override
+    public Block[][] getMap() {
+        return map;
+    }
+
+    @Override
+    public void updateTile(int x, int y, Block block) {
+
+    }
+
+    @Override
+    public Block getTileAt(int x, int y) {
+        return map[x][y];
+    }
+}
 
         /*
         * floor tile
