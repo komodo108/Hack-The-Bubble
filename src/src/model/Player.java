@@ -19,17 +19,31 @@ public class Player extends Observable implements IPlayer {
     public void move(char direction){
         switch(direction){
             case 'u':
-                if(!((map[x][y+1].getChar(map[x][y+1]) == Block.floor || checkWall)))
+                if(!(checkWall(x, (y+1)))){
+                    y = y+1;
+                }
                 break;
-            case 'd': break;
-            case 'l': break;
-            case 'r': break;
+            case 'd':
+                if(!(checkWall(x, (y-1)))){
+                    y = y-1;
+                }
+                break;
+            case 'l':
+                if(!(checkWall((x+1), y))){
+                    x = x+1;
+                }
+                break;
+            case 'r':
+                if(!(checkWall((x-1), y))){
+                    x = x-1;
+                }
+                break;
         }
     }
 
     @Override
     public boolean checkWall(int x, int y) {
-        boolean thatsAWall;
+        boolean thatsAWall = false;
         if (map[x][y] == wall || map[x][y] == floor) {
             thatsAWall == true;
         }
