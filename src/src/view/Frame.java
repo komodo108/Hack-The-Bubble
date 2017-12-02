@@ -12,7 +12,7 @@ import java.util.Observer;
 public class Frame implements Observer {
 
     private JFrame frame;
-    private Dimension size = new Dimension(400, 400);
+    private Dimension size = new Dimension(800, 800);
 
     private Render render;
     private IPlayer player;
