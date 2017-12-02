@@ -30,7 +30,7 @@ public class Player extends Observable implements IPlayer {
     @Override
     public boolean checkWall(int x, int y) {
         boolean thatsAWall;
-        if (map[x][y] == wall) {
+        if (map[x][y] == wall || map[x][y] == floor) {
             thatsAWall == true;
         }
         else {
