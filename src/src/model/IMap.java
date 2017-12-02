@@ -26,4 +26,10 @@ public interface IMap {
      */
     Block getTileAt(int x, int y);
 
+    /**
+     * Reads in a map file and sets the map to that file
+     * @param pathname the path to the map file
+     */
+    void readMapFromFile(String pathname);
+
 }
