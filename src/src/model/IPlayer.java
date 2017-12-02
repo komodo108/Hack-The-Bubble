@@ -15,12 +15,18 @@ public interface IPlayer {
      * @param x x coord
      * @param y y coord
      */
-    void checkWall(int x, int y);
+    boolean checkWall(int x, int y);
 
     /**
      * Returns a new Dimension object with the players x and y coordinates
      * @return a new Dimension object with the players x and y coordinates
      */
     Dimension getPos();
+
+    /**
+     * Gets the number of jumps the player has before they start falling
+     * @return jumps the player has before they start falling
+     */
+    int getJumps();
 
 }
