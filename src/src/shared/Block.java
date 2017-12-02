@@ -25,7 +25,7 @@ public class Block {
     public final char door = 'd';
     public final char finish = 'Y';
     public final char key = 'k';
-    
+
     public final char ERROR = 'E';
 
     public Block(char type) {
