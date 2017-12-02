@@ -58,17 +58,21 @@ public class Player extends Observable implements IPlayer {
                     break;
             }
 
+            boolean isDone = false;
             for(int i = 0; i < map.getMap().length; i++) {
-                for(int j = 0; j < map.getMap()[x].length; j++) {
-                    if(map.getTileAt(x, y).type == Block.enemy) {
-                        if(enemy == 0) {
-                            map.updateTile(x, y, new Block(Block.empty));
-                            map.updateTile(x, (y-1), new Block(Block.enemy));
-                            enemy++;
-                        } else {
-                            map.updateTile(x, y, new Block(Block.empty));
-                            map.updateTile(x, (y+1), new Block(Block.enemy));
-                            enemy++;
+                for(int j = 0; j < map.getMap()[i].length; j++) {
+                    if(map.getTileAt(i, j).type == Block.enemy) {
+                        if(!isDone) {
+                            if (enemy == 0) {
+                                map.updateTile(i, j, new Block(Block.empty));
+                                map.updateTile((i - 1), j, new Block(Block.enemy));
+                                enemy++;
+                            } else if (enemy == 1) {
+                                map.updateTile(i, j, new Block(Block.empty));
+                                map.updateTile((i + 1), j, new Block(Block.enemy));
+                                enemy--;
+                            }
+                            isDone = true;
                         }
                     }
                 }
