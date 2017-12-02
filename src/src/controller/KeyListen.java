@@ -45,10 +45,10 @@ public class KeyListen implements KeyListener {
 
         if(player.hasWon()) {
             int mapID = player.getMapID();
-            player.setMapID(mapID++);
+            player.setMapID(mapID);
 
             if(mapID < 4) {
-                map.readMapFromFile("Map" + mapID + ".txt");
+                map.readMapFromFile("Map" + (mapID) + ".txt");
                 player.moveTo(1, 22);
             }
         }
