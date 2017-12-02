@@ -1,16 +1,16 @@
-interaction with blockade: "A cracked pillar stands in your way. It's only a push away from falling apart."
+interaction with blockade: "A cracked pillar stands in your way. It's falling apart."
 interaction with lever/button: "You press the button and hear a terrible crumbling sound."
 
 interaction with door (if player has no key): "An imposing door looms in front of you."
-interaction with key: "Something glints on the floor in the dim light. There is a key."
+interaction with key: "Something glints on the floor in the dim light. A key."
 interaction with door (if player has key): "Silently, the door swings open."
 
-interaction with first upgrade: "A soul..? You reach out to it and feel a rush of power. The soul disappears. It matters"
-no more..."
+interaction with first upgrade: "A soul? You reach out and feel a rush of power. It disappears."
 interaction with all upgrades after first: "You feel yourself grow stronger."
-interaction with exit: "Finding an exit, you leave the area behind and make your escape."
+interaction with exit: "Finding an exit, you leave the area behind."
 
 interaction with deadly fulff: "What are you looking at you mangled lizard?" *player dies*
+interaction with non-deadly fluff: "Fellow infernal, you're looking grim. Here, empower thyself."
 
 General story:
 - the player is a dragon trapped in a dungeon
@@ -43,3 +43,7 @@ Fire greets you from a pit below, but once again a trace of fresh air manages to
 sneak its way through to you.
 
 You must continue."
+
+Start of lvl 3:
+
+"More fire, more oxygen. Surely you must be getting closer."
