@@ -66,7 +66,7 @@ public class Player extends Observable implements IPlayer {
     @Override
     public boolean hasWon() {
         boolean canIHazWin;
-        if(map.getMap()[getPos().width][getPos().height] == Block.finish) {
+        if(map.getMap()[getPos().width][getPos().height].type == Block.finish) {
             canIHazWin = true;
         }
         else {
