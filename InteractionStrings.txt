@@ -7,3 +7,5 @@ interaction with door (if player has key): "Silently, the door swings open."
 
 interaction with upgrade: "You feel yourself grow stronger."
 interaction with exit: "Finding an exit, you leave the area behind and make your escape."
+
+interaction with deadly fulff: "What are you looking at you mangled lizard?" *player dies*
