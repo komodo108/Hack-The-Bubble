@@ -35,8 +35,8 @@ public class Render extends JPanel {
         renderPlayer(g, map.getMap());
         renderJumps(g);
 
-        if(player.hasLost()) renderWin(g);
-        else renderWin(g);
+        if(player.hasWon()) renderWin(g);
+        else if(player.hasLost()) renderLoss(g);
     }
 
     @Deprecated

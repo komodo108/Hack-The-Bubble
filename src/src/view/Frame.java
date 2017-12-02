@@ -14,7 +14,7 @@ import java.util.Observer;
 public class Frame implements Observer {
 
     private JFrame frame;
-    private Dimension size = new Dimension(800, 800);
+    private Dimension size = new Dimension(800, 837);
 
     private Render render;
     private IPlayer player;
@@ -22,6 +22,8 @@ public class Frame implements Observer {
 
     public Frame() {
         this.map = new Map();
+        map.readMapFromFile("Map2.txt");
+
         this.player = new Player(map);
 
         makeFrame();
@@ -35,7 +37,6 @@ public class Frame implements Observer {
 
         render = new Render(size, map, player);
         render.setBounds(0, 0, size.width, size.height);
-        render.setBackground(new Color(0, 0, 0));
 
         frame.addKeyListener(new KeyListen(player));
         frame.add(render);

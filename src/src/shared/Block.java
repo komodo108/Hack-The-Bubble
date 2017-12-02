@@ -3,7 +3,7 @@ package shared;
 public class Block {
 
     /**
-     * EMPTY ' '
+     * EMPTY '.'
      * FLOOR 'f'
      * LAVA 'l'
      * WALL 'w'
@@ -18,7 +18,7 @@ public class Block {
 
     public char type;
 
-    public final static char empty = ' ';
+    public final static char empty = '.';
     public final static char finish = 'Y';
 
     public final static char floor = 'f';

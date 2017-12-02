@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.Observable;
 
 public class Map extends Observable implements IMap {
-    private int size = 15;
+    private int size = 25;
     private Block[][] map = new Block[size][size];
 
     //return size
@@ -38,10 +38,9 @@ public class Map extends Observable implements IMap {
             //i = y; j = x
         String line = "";
         for(int i = 0; (line = mapReader.readLine()) != null; i++) {
-
             char[] chars = line.toCharArray();
 
-            for (int j = 0; j < size; i++) {
+            for (int j = 0; j < size; j++) {
 
                 switch(chars[j]) {
                     case Block.empty:
