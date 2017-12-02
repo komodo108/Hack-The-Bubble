@@ -104,6 +104,8 @@ public class Player extends Observable implements IPlayer {
             text = "Fellow infernal, you're looking grim. Here, empower thyself.";
             interact = true;
         } else if(map.getTileAt(x, y).type == Block.upgrade) {
+            text = "You feel yourself grow stronger.";
+            interact = true;
             maxJumps += 2;
             map.updateTile(x, y, new Block(Block.empty));
         } else if(map.getTileAt(x, y).type == Block.key) {
