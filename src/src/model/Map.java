@@ -3,6 +3,7 @@ import model.IMap;
 import shared.Block;
 import sun.invoke.empty.Empty;
 
+import java.io.*;
 import java.util.Observable;
 
 public class Map extends Observable implements IMap {
@@ -10,33 +11,6 @@ public class Map extends Observable implements IMap {
     private Block[][] map = new Block[size][size];
     private char[][] importedMap = new char [size][size];
 
-
-
-    private void makeBoard(){
-        // this will set the initial empty board
-        //defines valid and invalid
-
-        for (int x = 0; x < size; x++){
-            for (int y = 0; y < size; y++){
-
-                map[x][y].type = importedMap
-
-
-            }
-        }
-    }
-
-    public void setBoard(){
-        //this will put the players on the board
-        //clears the board
-
-        //putting the geese on the board
-        for (int i = 0; i < gooseNum; i++){
-
-        }
-
-
-    }
 
 
 
@@ -64,6 +38,62 @@ public class Map extends Observable implements IMap {
 
     @Override
     public void readMapFromFile(String pathname) {
+        try {
+            BufferedReader mapReader = new BufferedReader(new FileReader(pathname));
+
+
+            //i = y; j = x
+        String line = "";
+        for(int i = 0; (line = mapReader.readLine()) != null; i++) {
+
+            char[] chars = line.toCharArray();
+
+            for (int j = 0; j < size; i++) {
+
+                switch(chars[j]) {
+                    case Block.empty:
+                        map[j][i] = Block.empty;
+                        break;
+
+                    case Block.floor:
+                        map[j][i] = Block.floor;
+                        break;
+
+                    case Block.lava:
+                        map[j][i] = Block.lava;
+                        break;
+
+                    case Block.wall:
+                        map[j][i] = Block.wall;
+                        break;
+
+                    case Block.spike:
+                        map[j][i] = Block.spike;
+                        break;
+
+                    case Block.door:
+                        map[j][i] = Block.door;
+                        break;
+
+                    case Block.finish:
+                        map[j][i] = Block.finish;
+                        break;
+
+                    case Block.key:
+                        map[j][i] = Block.key;
+                        break;
+
+
+
+                }
+            }
+        }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

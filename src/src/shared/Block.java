@@ -13,15 +13,15 @@ public class Block {
      * key 'k'
      */
 
-    public static char empty = ' ';
-    public static char floor = 'f';
-    public static char lava = 'l';
-    public static char wall = 'w';
-    public static char spike = 's';
-    public static char door = 'd';
-    public static char finish = 'Y';
-    public static char key = 'k';
-    
+    public final static char empty = ' ';
+    public final static char floor = 'f';
+    public final static char lava = 'l';
+    public final static char wall = 'w';
+    public final static char spike = 's';
+    public final static char door = 'd';
+    public final static char finish = 'Y';
+    public final static char key = 'k';
+
 
 
 
