@@ -103,6 +103,7 @@ public class Player extends Observable implements IPlayer {
         } else if(map.getTileAt(x, y).type == Block.cute2) {
             text = "Fellow infernal, you're looking grim. Here, empower thyself.";
             interact = true;
+            maxJumps +=2;
         } else if(map.getTileAt(x, y).type == Block.upgrade) {
             text = "You feel yourself grow stronger.";
             interact = true;
