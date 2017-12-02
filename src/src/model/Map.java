@@ -19,7 +19,6 @@ public class Map extends Observable implements IMap {
         for (int x = 0; x < size; x++){
             for (int y = 0; y < size; y++){
 
-                map[x][y].type = importedMap
 
 
             }
@@ -27,13 +26,6 @@ public class Map extends Observable implements IMap {
     }
 
     public void setBoard(){
-        //this will put the players on the board
-        //clears the board
-
-        //putting the geese on the board
-        for (int i = 0; i < gooseNum; i++){
-
-        }
 
 
     }

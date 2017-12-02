@@ -1,6 +1,7 @@
 package model;
 
 import shared.Block;
+import view.Frame;
 
 public interface IMap {
 

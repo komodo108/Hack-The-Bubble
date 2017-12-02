@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 public interface IPlayer {
 
     /**
@@ -14,5 +16,11 @@ public interface IPlayer {
      * @param y y coord
      */
     void checkWall(int x, int y);
+
+    /**
+     * Returns a new Dimension object with the players x and y coordinates
+     * @return a new Dimension object with the players x and y coordinates
+     */
+    Dimension getPos();
 
 }

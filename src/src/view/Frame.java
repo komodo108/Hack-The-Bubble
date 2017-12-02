@@ -9,21 +9,17 @@ import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Frame extends Observable {
+public class Frame implements Observer {
 
     private JFrame frame;
-    private JPanel panel;
     private Dimension size = new Dimension(400, 400);
 
-    private Graphics g;
     private Render render;
-
     private IPlayer player;
     private IMap map;
 
     public Frame() {
         makeFrame();
-        render = new Render(g);
     }
 
     public void makeFrame() {
@@ -32,12 +28,34 @@ public class Frame extends Observable {
         frame.setSize(size);
         frame.setResizable(false);
 
-        panel = new JPanel();
-        panel.setBackground(new Color(0, 0, 0));
-        panel.addKeyListener(new KeyListen(player));
-        g = panel.getGraphics();
+        render = new Render(size, map, player);
+        render.setBounds(0, 0, size.width, size.height);
+        render.setBackground(new Color(0, 0, 0));
 
+        frame.addKeyListener(new KeyListen(player));
+        frame.add(render);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(panel);
+        frame.setVisible(true);
+
+        frame.repaint();
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                render.paintComponent(render.getGraphics());
+                render.repaint();
+            }
+        });
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                render.paintComponent(render.getGraphics());
+                render.repaint();
+            }
+        });
     }
 }

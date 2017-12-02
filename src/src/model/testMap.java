@@ -1,7 +1,12 @@
-public class testMap{
+package model;
+
+import model.*;
+
+public class testMap {
+
     public static void main(String[] arg){
 
-        Map this = new Map();
+        IMap map = new Map();
 
     }
 }

@@ -7,6 +7,9 @@ import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.*;
 
+/**
+ * Updates the player class on key press which will update the render
+ */
 public class KeyListen implements KeyListener {
 
     private IPlayer player;
