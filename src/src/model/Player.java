@@ -109,15 +109,21 @@ public class Player extends Observable implements IPlayer {
             maxJumps += 2;
             map.updateTile(x, y, new Block(Block.empty));
         } else if(map.getTileAt(x, y).type == Block.key) {
+            text = "Something glints on the floor in the dim light. A key.";
+            interact = true;
             hasKey = true;
             map.updateTile(x, y, new Block(Block.empty));
         } else if(map.getTileAt(x, y).type == Block.lever1) {
+            text = "You press the button and hear a terrible crumbling sound.";
+            interact = true;
             for(int i = 0; i < map.getMap().length; i++) {
                 for(int j = 0; j < map.getMap()[i].length; j++) {
                     if(map.getTileAt(i, j).type == Block.blockage1) map.updateTile(i, j, new Block(Block.empty));
                 }
             }
         } else if (map.getTileAt(x, y).type == Block.lever2) {
+            text = "You press the button and hear a terrible crumbling sound.";
+            interact = true;
             for(int i = 0; i < map.getMap().length; i++) {
                 for(int j = 0; j < map.getMap()[i].length; j++) {
                     if(map.getTileAt(i, j).type == Block.blockage2) map.updateTile(i, j, new Block(Block.empty));
@@ -125,9 +131,15 @@ public class Player extends Observable implements IPlayer {
             }
         } else if(map.getTileAt(x,y).type == Block.door) {
             if (hasKey) {
+                text = "Silently, the door swings open.";
+                interact = true;
                 map.updateTile(x, y, new Block(Block.empty));
                 return false;
-            } else return true;
+            } else {
+                text = "An imposing door looms in front of you.";
+                interact = true;
+                return true;
+            }
         } else if (map.getTileAt(x, y).type == Block.spike) {
             jumps = 0;
             maxJumps = 0;
