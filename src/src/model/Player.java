@@ -89,7 +89,7 @@ public class Player extends Observable implements IPlayer {
     @Override
     public boolean checkWall(int x, int y) {
         if(map.getTileAt(x, y).type == Block.cute1) {
-            text = "I am a cute thing";
+            text = "What are you looking at you mangled lizard?";
             interact = true;
 
             for(int i = 0; i < map.getMap().length; i++) {
@@ -101,7 +101,7 @@ public class Player extends Observable implements IPlayer {
                 }
             }
         } else if(map.getTileAt(x, y).type == Block.cute2) {
-            text = "I am not a cute thing";
+            text = "Fellow infernal, you're looking grim. Here, empower thyself.";
             interact = true;
         } else if(map.getTileAt(x, y).type == Block.upgrade) {
             maxJumps += 2;
