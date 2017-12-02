@@ -22,7 +22,7 @@ public class Frame implements Observer {
 
     public Frame() {
         this.map = new Map();
-        map.readMapFromFile("Map2.txt");
+        map.readMapFromFile("Map1.txt");
 
         this.player = new Player(map);
 
@@ -39,7 +39,7 @@ public class Frame implements Observer {
         render = new Render(size, map, player);
         render.setBounds(0, 0, size.width, size.height);
 
-        frame.addKeyListener(new KeyListen(player));
+        frame.addKeyListener(new KeyListen(player, map));
         frame.add(render);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

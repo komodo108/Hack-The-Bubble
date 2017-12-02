@@ -47,4 +47,23 @@ public interface IPlayer {
      * @param o an Observer
      */
     void addAnObserver(Observer o);
+
+    /**
+     * Returns the map ID
+     * @return the map ID
+     */
+    int getMapID();
+
+    /**
+     * Moves the player to (x, y)
+     * @param x x coord
+     * @param y y coord
+     */
+    void moveTo(int x, int y);
+
+    /**
+     * Sets the mapID to ID
+     * @param mapID the map ID
+     */
+    void setMapID(int mapID);
 }

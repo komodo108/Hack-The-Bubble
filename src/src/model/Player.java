@@ -9,6 +9,7 @@ import java.util.Observer;
 public class Player extends Observable implements IPlayer {
     private int x = 1;
     private int y = 22;
+    private int mapID = 1;
     private IMap map;
 
     private boolean hasKey = false;
@@ -116,6 +117,7 @@ public class Player extends Observable implements IPlayer {
             boolean canIHazWin;
             if (map.getMap()[getPos().width][getPos().height].type == Block.finish) {
                 canIHazWin = true;
+                mapID++;
             } else {
                 canIHazWin = false;
             }
@@ -148,6 +150,23 @@ public class Player extends Observable implements IPlayer {
 
     public void addAnObserver(Observer o) {
         addObserver(o);
+    }
+
+    public int getMapID() {
+        return mapID;
+    }
+
+    public void setMapID(int mapID) {
+        this.mapID = mapID;
+        jumps = maxJumps;
+    }
+
+    public void moveTo(int x, int y) {
+        this.x = x;
+        this.y = y;
+
+        setChanged();
+        notifyObservers();
     }
 
 }
