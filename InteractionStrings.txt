@@ -9,3 +9,26 @@ interaction with upgrade: "You feel yourself grow stronger."
 interaction with exit: "Finding an exit, you leave the area behind and make your escape."
 
 interaction with deadly fulff: "What are you looking at you mangled lizard?" *player dies*
+
+General story:
+- the player is a dragon trapped in a dungeon
+- the main goal is to escape
+
+"You come to on the cold ground, tired eyes cracking open to blurry stone and the taste of dust on your tongue.
+Stale air fills your lungs as you heave yourself to your feet, slamming your wing into a nearby wall with a resounding
+smack in an attempt to stretch.
+
+You curse, feeling the ache in your bones. Flying for more than a few minutes would be difficult in this state.
+
+You aren't sure what happened to you, but one thing was clear: you need to get out of here, and fast. Something in the
+air seemed to grow progressively more oppressive the longer you remained.
+
+Then suddenly, something changed.
+
+What was that?
+
+You inhale.
+
+A whiff of fresh air?
+
+It was only a trace, but that was enough. There must be an exit here somewhere..."
