@@ -14,6 +14,9 @@ public class Player extends Observable implements IPlayer {
     private int enemy = 0;
 
     private boolean hasKey = false;
+    private boolean interact = false;
+    private String text = "";
+
     private int maxJumps = 6;
     private int jumps = maxJumps;
 
@@ -65,11 +68,11 @@ public class Player extends Observable implements IPlayer {
                         if(!isDone) {
                             if (enemy == 0) {
                                 map.updateTile(i, j, new Block(Block.empty));
-                                map.updateTile((i - 1), j, new Block(Block.enemy));
+                                map.updateTile(i, (j - 1), new Block(Block.enemy));
                                 enemy++;
                             } else if (enemy == 1) {
                                 map.updateTile(i, j, new Block(Block.empty));
-                                map.updateTile((i + 1), j, new Block(Block.enemy));
+                                map.updateTile(i, (j + 1), new Block(Block.enemy));
                                 enemy--;
                             }
                             isDone = true;
@@ -86,9 +89,20 @@ public class Player extends Observable implements IPlayer {
     @Override
     public boolean checkWall(int x, int y) {
         if(map.getTileAt(x, y).type == Block.cute1) {
+            text = "I am a cute thing";
+            interact = true;
 
+            for(int i = 0; i < map.getMap().length; i++) {
+                for(int j = 0; j < map.getMap()[i].length; j++) {
+                    if(map.getTileAt(i, j).type == Block.cute1) {
+                        map.updateTile(i, j, new Block(Block.empty));
+                        map.updateTile(i, (j-1), new Block(Block.enemy));
+                    }
+                }
+            }
         } else if(map.getTileAt(x, y).type == Block.cute2) {
-
+            text = "I am not a cute thing";
+            interact = true;
         } else if(map.getTileAt(x, y).type == Block.upgrade) {
             maxJumps += 2;
             map.updateTile(x, y, new Block(Block.empty));
@@ -201,4 +215,19 @@ public class Player extends Observable implements IPlayer {
         notifyObservers();
     }
 
+    public String getToSay() {
+        return text;
+    }
+
+    public boolean isInteract() {
+        return interact;
+    }
+
+    public void setInteract(boolean interact) {
+        this.interact = interact;
+        text = "";
+
+        setChanged();
+        notifyObservers();
+    }
 }

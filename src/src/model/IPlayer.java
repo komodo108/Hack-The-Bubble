@@ -66,4 +66,10 @@ public interface IPlayer {
      * @param mapID the map ID
      */
     void setMapID(int mapID);
+
+    String getToSay();
+
+    boolean isInteract();
+
+    void setInteract(boolean interact);
 }

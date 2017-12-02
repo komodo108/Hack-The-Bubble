@@ -14,12 +14,15 @@ public class Render extends JPanel {
     private IMap map;
     private IPlayer player;
 
+    private String text;
+
     private SpriteLoader loader;
 
     public Render(Dimension size, IMap map, IPlayer player) {
         this.size = size;
         this.map = map;
         this.player = player;
+        this.text = "";
 
         try {
             loader = new SpriteLoader(32, 32, 8, 8);
@@ -34,14 +37,27 @@ public class Render extends JPanel {
         renderMap(g, map.getMap());
         renderPlayer(g, map.getMap());
         renderJumps(g);
+        renderText(g);
 
         if(player.hasWon()) renderWin(g);
         else if(player.hasLost()) renderLoss(g);
     }
 
-    @Deprecated
-    public void renderText(String text) {
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void renderText(Graphics g) {
         //Renders text in a textbox
+        if(!text.equals("")) {
+            g.setColor(new Color(255, 255, 255));
+            g.fillRect(20, 20, size.width - 40, 60);
+            g.setColor(new Color(0, 0, 0));
+            g.fillRect(25, 25, size.width-50, 50);
+            g.setColor(new Color(255, 255, 255));
+            g.setFont(new Font("Courier", 1, 20));
+            g.drawString(text, 30, 57);
+        }
     }
 
     public void renderMap(Graphics g, Block[][] blocks) {
@@ -92,13 +108,13 @@ public class Render extends JPanel {
                         g.drawImage(loader.getSprites(2), x * 32, y * 32, null);
                         break;
                     case Block.cute1:
-                        g.drawImage(loader.getSprites(11), x * 32, y * 32, null);
+                        g.drawImage(loader.getSprites(19), x * 32, y * 32, null);
                         break;
                     case Block.cute2:
-                        g.drawImage(loader.getSprites(12), x * 32, y * 32, null);
+                        g.drawImage(loader.getSprites(20), x * 32, y * 32, null);
                         break;
                     case Block.enemy:
-                        g.drawImage(loader.getSprites(14), x * 32, y * 32, null);
+                        g.drawImage(loader.getSprites(22), x * 32, y * 32, null);
                         break;
 
                 }
@@ -128,7 +144,7 @@ public class Render extends JPanel {
         g.setColor(new Color(255, 215, 0, 80));
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", 1, 24));
+        g.setFont(new Font("Courier", 1, 24));
         g.drawString(s, size.width / 2 - ((s.length() * 24) / 4), size.height / 2 - 12);
     }
 
@@ -138,7 +154,7 @@ public class Render extends JPanel {
         g.setColor(new Color(255, 0, 0, 160));
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", 1, 24));
+        g.setFont(new Font("Courier", 1, 24));
         g.drawString(s, size.width / 2 - ((s.length() * 24) / 4), size.height / 2 - 12);
     }
 

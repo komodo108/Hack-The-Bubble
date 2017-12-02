@@ -60,6 +60,7 @@ public class Frame implements Observer {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                render.setText(player.getToSay());
                 render.paintComponent(render.getGraphics());
                 render.repaint();
             }
