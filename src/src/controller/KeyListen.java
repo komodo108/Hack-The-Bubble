@@ -1,5 +1,6 @@
 package controller;
 
+import model.IMap;
 import model.IPlayer;
 
 import java.awt.event.KeyEvent;
@@ -13,9 +14,11 @@ import static java.awt.event.KeyEvent.*;
 public class KeyListen implements KeyListener {
 
     private IPlayer player;
+    private IMap map;
 
-    public KeyListen(IPlayer player) {
+    public KeyListen(IPlayer player, IMap map) {
         this.player = player;
+        this.map = map;
     }
 
     @Override
@@ -37,6 +40,16 @@ public class KeyListen implements KeyListener {
                 case VK_DOWN:
                     player.move('d');
                     break;
+            }
+        }
+
+        if(player.hasWon()) {
+            int mapID = player.getMapID();
+            player.setMapID(mapID++);
+
+            if(mapID < 4) {
+                map.readMapFromFile("Map" + mapID + ".txt");
+                player.moveTo(1, 22);
             }
         }
     }
