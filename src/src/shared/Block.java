@@ -21,5 +21,9 @@ public class Block {
     public static char door = 'd';
     public static char finish = 'Y';
     public static char key = 'k';
+    
+
+
+
 
 }
