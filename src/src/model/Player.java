@@ -10,51 +10,92 @@ public class Player extends Observable implements IPlayer {
     private int x = 1;
     private int y = 22;
     private IMap map;
-    private int jumps = 0;
-    private int maxJumps = 6;
 
+    private boolean hasKey = false;
+    private int maxJumps = 6;
+    private int jumps = maxJumps;
 
     public Player(IMap map){
         this.map = map;
     }
 
-
     @Override
-    public void move(char direction){
-        switch(direction){
-            case 'u':
-                if(!(checkWall(x, (y+1)))){
-                    y = y+1;
-                }
-                break;
-            case 'd':
-                if(!(checkWall(x, (y-1)))){
-                    y = y-1;
-                }
-                break;
-            case 'l':
-                if(!(checkWall((x+1), y))){
-                    x = x+1;
-                }
-                break;
-            case 'r':
-                if(!(checkWall((x-1), y))){
-                    x = x-1;
-                }
-                break;
-        }
+    public void move(char direction) {
+        try {
+            if (direction != 'd') {
+                if (jumps > 0) jumps -= 1;
+            }
+            switch (direction) {
+                case 'u':
+                    if (!(checkWall(x, (y - 1)))) {
+                        if (jumps > 0) {
+                            y--;
+                        } else {
+                            y++;
+                        }
+                    }
+                    break;
+                case 'd':
+                    if (!(checkWall(x, (y + 1)))) {
+                        y++;
+                    }
+                    break;
+                case 'l':
+                    if (!(checkWall((x - 1), y))) {
+                        x--;
+                        if (jumps == 0) y++;
+                    }
+                    break;
+                case 'r':
+                    if (!(checkWall((x + 1), y))) {
+                        x++;
+                        if (jumps == 0) y++;
+                    }
+                    break;
+            }
+        } catch (ArrayIndexOutOfBoundsException e) { }
+
+        setChanged();
+        notifyObservers();
     }
 
     @Override
     public boolean checkWall(int x, int y) {
-        boolean thatsAWall = false;
-        if (map.getMap()[x][y].getChar(map.getTileAt(x,y)) == Block.wall || map.getMap()[x][y].getChar(map.getTileAt(x,y)) == Block.floor) {
-            thatsAWall = true;
+        if(map.getTileAt(x, y).type == Block.upgrade) {
+            maxJumps += 2;
+            map.updateTile(x, y, new Block(Block.empty));
+        } else if(map.getTileAt(x, y).type == Block.key) {
+            hasKey = true;
+            map.updateTile(x, y, new Block(Block.empty));
+        } else if(map.getTileAt(x, y).type == Block.lever1) {
+            for(int i = 0; i < map.getMap().length; i++) {
+                for(int j = 0; j < map.getMap()[i].length; j++) {
+                    if(map.getTileAt(i, j).type == Block.blockage1) map.updateTile(i, j, new Block(Block.empty));
+                }
+            }
+        } else if (map.getTileAt(x, y).type == Block.lever2) {
+            for(int i = 0; i < map.getMap().length; i++) {
+                for(int j = 0; j < map.getMap()[i].length; j++) {
+                    if(map.getTileAt(i, j).type == Block.blockage2) map.updateTile(i, j, new Block(Block.empty));
+                }
+            }
+        } else if(map.getTileAt(x,y).type == Block.door) {
+            if(hasKey) {
+                map.updateTile(x, y, new Block(Block.empty));
+                return false;
+            } else return true;
+        } else if(map.getTileAt(x, y + 1).type == Block.floor) {
+            jumps = maxJumps;
+            return false;
+        } else if(map.getTileAt(x, y).type == Block.empty) {
+            return false;
+        } else if (map.getTileAt(x, y).type == Block.spike) {
+            jumps = 0;
+            maxJumps = 0;
+            return true;
         }
-        else {
-            thatsAWall = false;
-        }
-        return thatsAWall;
+
+        return true;
     }
 
     @Override
@@ -69,36 +110,36 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public boolean hasWon() {
-        boolean canIHazWin;
-        if(map.getMap()[getPos().width][getPos().height].type == Block.finish) {
-            canIHazWin = true;
+        try {
+            boolean canIHazWin;
+            if (map.getMap()[getPos().width][getPos().height].type == Block.finish) {
+                canIHazWin = true;
+            } else {
+                canIHazWin = false;
+            }
+            return canIHazWin;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return false;
         }
-        else {
-            canIHazWin = false;
-        }
-        return canIHazWin;
     }
 
     @Override
     public boolean hasLost() {
         boolean arrowToTheKnee = false;
         try {
-            if (map.getMap()[x][y+1].getChar(map.getTileAt(x,(y+1))) == Block.lava || map.getMap()[x][y+1].getChar(map.getTileAt(x,(y+1))) == Block.spike) {
+            if (map.getTileAt(x, y+1).type == Block.lava || map.getTileAt(x, y+1).type == Block.spike) {
                 arrowToTheKnee = true;
 
-            } else if (map.getMap()[x][y-1].getChar(map.getTileAt(x,(y-1))) == Block.lava || map.getMap()[x][y-1].getChar(map.getTileAt(x,(y-1))) == Block.spike) {
+            } else if (map.getTileAt(x, y-1).type == Block.lava || map.getTileAt(x, y-1).type == Block.spike) {
                 arrowToTheKnee = true;
 
-            } else if (map.getMap()[x+1][y].getChar(map.getTileAt((x+1),y)) == Block.lava || map.getMap()[x+1][y].getChar(map.getTileAt((x+1),y)) == Block.spike) {
+            } else if (map.getTileAt(x+1, y).type == Block.lava || map.getTileAt(x+1, y).type == Block.spike) {
                 arrowToTheKnee = true;
 
-            } else if (map.getMap()[x-1][y].getChar(map.getTileAt((x-1),y)) == Block.lava || map.getMap()[x-1][y].getChar(map.getTileAt((x-1),y)) == Block.spike) {
-                arrowToTheKnee = true;
-
-            } else {
-                arrowToTheKnee = false;
-            }
-        } catch(ArrayIndexOutOfBoundsException e){ }
+            } else return (map.getTileAt(x-1, y).type == Block.lava || map.getTileAt(x-1, y).type == Block.spike);
+        } catch(ArrayIndexOutOfBoundsException e){
+            return true;
+        }
 
         return arrowToTheKnee;
     }

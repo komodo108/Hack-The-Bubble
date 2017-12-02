@@ -23,19 +23,21 @@ public class KeyListen implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        switch (keyEvent.getKeyCode()) {
-            case VK_LEFT:
-                player.move('l');
-                break;
-            case VK_RIGHT:
-                player.move('r');
-                break;
-            case VK_UP:
-                player.move('u');
-                break;
-            case VK_DOWN:
-                player.move('d');
-                break;
+        if(!player.hasLost()) {
+            switch (keyEvent.getKeyCode()) {
+                case VK_LEFT:
+                    player.move('l');
+                    break;
+                case VK_RIGHT:
+                    player.move('r');
+                    break;
+                case VK_UP:
+                    player.move('u');
+                    break;
+                case VK_DOWN:
+                    player.move('d');
+                    break;
+            }
         }
     }
 

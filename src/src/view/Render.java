@@ -108,9 +108,9 @@ public class Render extends JPanel {
     }
 
     public void renderJumps(Graphics g) {
-        g.setFont(new Font("Courier New", 1, 12));
-        g.setColor(new Color(205, 205, 0));
-        g.drawString(String.valueOf(player.getJumps()), 2, 2);
+        g.setFont(new Font("Courier", 1, 36));
+        g.setColor(new Color(255, 255, 0));
+        g.drawString(String.valueOf(player.getJumps()), 10, 40);
     }
 
     public void renderWin(Graphics g) {
