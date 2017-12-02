@@ -1,2 +1,4 @@
 # Hack-The-Bubble
-Project for Hack the Bubble 2017
+
+### Motivation
+Project for Hack the Bubble 2017 - done in 12 hours
