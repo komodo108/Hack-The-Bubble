@@ -55,7 +55,7 @@ public class Render extends JPanel {
                         g.drawImage(loader.getSprites(5), x * 32, y * 32, null);
                         break;
                     case Block.finish:
-                        g.drawImage(loader.getSprites(10), x * 32, y * 32, null);
+                        g.drawImage(loader.getSprites(13), x * 32, y * 32, null);
                         break;
                     case Block.blockage1:
                         g.drawImage(loader.getSprites(7), x * 32, y * 32, null);
@@ -90,6 +90,15 @@ public class Render extends JPanel {
                         break;
                     case Block.wall:
                         g.drawImage(loader.getSprites(2), x * 32, y * 32, null);
+                        break;
+                    case Block.cute1:
+                        g.drawImage(loader.getSprites(11), x * 32, y * 32, null);
+                        break;
+                    case Block.cute2:
+                        g.drawImage(loader.getSprites(12), x * 32, y * 32, null);
+                        break;
+                    case Block.enemy:
+                        g.drawImage(loader.getSprites(14), x * 32, y * 32, null);
                         break;
 
                 }

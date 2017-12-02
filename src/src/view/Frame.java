@@ -22,7 +22,7 @@ public class Frame implements Observer {
 
     public Frame() {
         this.map = new Map();
-        map.readMapFromFile("Map1.txt");
+        map.readMapFromFile("Map4.txt");
 
         this.player = new Player(map);
 

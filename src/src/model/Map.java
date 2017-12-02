@@ -1,7 +1,5 @@
 package model;
-import model.IMap;
 import shared.Block;
-import sun.invoke.empty.Empty;
 
 import java.io.*;
 import java.util.Observable;
@@ -91,11 +89,8 @@ public class Map extends Observable implements IMap {
                     case Block.blockage2:
                         map[j][i] = new Block(Block.blockage2);
                         break;
-                    case Block.enemy1:
-                        map[j][i] = new Block(Block.enemy1);
-                        break;
-                    case Block.enemy2:
-                        map[j][i] = new Block(Block.enemy2);
+                    case Block.enemy:
+                        map[j][i] = new Block(Block.enemy);
                         break;
                     case Block.cute1:
                         map[j][i] = new Block(Block.cute1);

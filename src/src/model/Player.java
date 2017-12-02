@@ -11,6 +11,7 @@ public class Player extends Observable implements IPlayer {
     private int y = 22;
     private int mapID = 1;
     private IMap map;
+    private int enemy = 0;
 
     private boolean hasKey = false;
     private int maxJumps = 6;
@@ -56,6 +57,22 @@ public class Player extends Observable implements IPlayer {
                     }
                     break;
             }
+
+            for(int i = 0; i < map.getMap().length; i++) {
+                for(int j = 0; j < map.getMap()[x].length; j++) {
+                    if(map.getTileAt(x, y).type == Block.enemy) {
+                        if(enemy == 0) {
+                            map.updateTile(x, y, new Block(Block.empty));
+                            map.updateTile(x, (y-1), new Block(Block.enemy));
+                            enemy++;
+                        } else {
+                            map.updateTile(x, y, new Block(Block.empty));
+                            map.updateTile(x, (y+1), new Block(Block.enemy));
+                            enemy++;
+                        }
+                    }
+                }
+            }
         } catch (ArrayIndexOutOfBoundsException e) { }
 
         setChanged();
@@ -64,7 +81,11 @@ public class Player extends Observable implements IPlayer {
 
     @Override
     public boolean checkWall(int x, int y) {
-        if(map.getTileAt(x, y).type == Block.upgrade) {
+        if(map.getTileAt(x, y).type == Block.cute1) {
+
+        } else if(map.getTileAt(x, y).type == Block.cute2) {
+
+        } else if(map.getTileAt(x, y).type == Block.upgrade) {
             maxJumps += 2;
             map.updateTile(x, y, new Block(Block.empty));
         } else if(map.getTileAt(x, y).type == Block.key) {
@@ -131,6 +152,10 @@ public class Player extends Observable implements IPlayer {
     public boolean hasLost() {
         boolean arrowToTheKnee = false;
         try {
+            if(map.getTileAt(x, y).type == Block.enemy) {
+                arrowToTheKnee = true;
+            }
+
             if (map.getTileAt(x, y+1).type == Block.lava || map.getTileAt(x, y+1).type == Block.spike) {
                 arrowToTheKnee = true;
 
@@ -140,7 +165,9 @@ public class Player extends Observable implements IPlayer {
             } else if (map.getTileAt(x+1, y).type == Block.lava || map.getTileAt(x+1, y).type == Block.spike) {
                 arrowToTheKnee = true;
 
-            } else return (map.getTileAt(x-1, y).type == Block.lava || map.getTileAt(x-1, y).type == Block.spike);
+            } else if (map.getTileAt(x-1, y).type == Block.lava || map.getTileAt(x-1, y).type == Block.spike) {
+                return true;
+            }
         } catch(ArrayIndexOutOfBoundsException e){
             return true;
         }
@@ -164,6 +191,7 @@ public class Player extends Observable implements IPlayer {
     public void moveTo(int x, int y) {
         this.x = x;
         this.y = y;
+        hasKey = false;
 
         setChanged();
         notifyObservers();

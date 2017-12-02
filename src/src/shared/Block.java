@@ -2,20 +2,6 @@ package shared;
 
 public class Block {
 
-    /**
-     * EMPTY '.'
-     * FLOOR 'f'
-     * LAVA 'l'
-     * WALL 'w'
-     * SPIKE 's'
-     * DOOR 'd'
-     * FINISH 'Y'
-     * KEY 'k'
-     * LEVER 'r'
-     *
-     * ERROR 'E'
-     */
-
     public char type;
 
     public final static char empty = '.';
@@ -35,8 +21,7 @@ public class Block {
     public final static char blockage1 = 'B';
     public final static char blockage2 = 'C';
 
-    public final static char enemy1 = 'E';
-    public final static char enemy2 = 'M';
+    public final static char enemy = 'E';
     public final static char cute1 = 'I';
     public final static char cute2 = 'T';
 
@@ -61,8 +46,7 @@ public class Block {
             case upgrade: return upgrade;
             case blockage1: return blockage1;
             case blockage2: return blockage2;
-            case enemy1: return enemy1;
-            case enemy2: return enemy2;
+            case enemy: return enemy;
             case cute1: return cute1;
             case cute2: return cute2;
 
@@ -86,8 +70,7 @@ public class Block {
             case upgrade: return true;
             case blockage1: return true;
             case blockage2: return true;
-            case enemy1: return false;
-            case enemy2: return false;
+            case enemy: return false;
             case cute1: return false;
             case cute2: return false;
 
