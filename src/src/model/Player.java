@@ -8,10 +8,10 @@ import java.util.Observable;
 public class Player extends Observable implements IPlayer {
     private int x = 1;
     private int y = 13;
-    private Block[][] map;
+    private IMap map;
 
-    Player(Block[][] theMap,){
-        map = theMap;
+    Player(IMap map){
+        this.map = map;
     }
 
 
