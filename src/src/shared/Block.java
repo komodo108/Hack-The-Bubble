@@ -19,14 +19,21 @@ public class Block {
     public char type;
 
     public final static char empty = ' ';
+    public final static char finish = 'Y';
+
     public final static char floor = 'f';
     public final static char lava = 'l';
     public final static char wall = 'w';
     public final static char spike = 's';
-    public final static char door = 'd';
-    public final static char finish = 'Y';
-    public final static char key = 'k';
-    public final static char lever = 'r';
+
+    public final static char door = 'D';
+    public final static char key = 'K';
+    public final static char lever1 = 'R';
+    public final static char lever2 = 'Q';
+    public final static char upgrade = 'U';
+
+    public final static char blockage1 = 'B';
+    public final static char blockage2 = 'C';
 
     public final static char ERROR = 'E';
 
@@ -44,7 +51,11 @@ public class Block {
             case door: return door;
             case finish: return finish;
             case key: return key;
-            case lever: return lever;
+            case lever1: return lever1;
+            case lever2: return lever2;
+            case upgrade: return upgrade;
+            case blockage1: return blockage1;
+            case blockage2: return blockage2;
         }
         return ERROR;
     }
