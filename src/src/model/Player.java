@@ -28,8 +28,15 @@ public class Player extends Observable implements IPlayer {
     }
 
     @Override
-    public void checkWall(int x, int y) {
-
+    public boolean checkWall(int x, int y) {
+        boolean thatsAWall;
+        if (map[x][y] == wall) {
+            thatsAWall == true;
+        }
+        else {
+            thatsAWall == false;
+        }
+        return thatsAWall;
     }
 
     @Override
