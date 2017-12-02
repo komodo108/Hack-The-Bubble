@@ -3,7 +3,7 @@ interaction with lever/button: "You press the button and hear a terrible crumbli
 
 interaction with door (if player has no key): "An imposing door looms in front of you."
 interaction with key: "Something glints on the floor in the dim light. There is a key."
-interaction with door (if player has key): "Silently, the door "
+interaction with door (if player has key): "Silently, the door swings open."
 
 interaction with upgrade: "You feel yourself grow stronger."
 interaction with exit: "Finding an exit, you leave the area behind and make your escape."
