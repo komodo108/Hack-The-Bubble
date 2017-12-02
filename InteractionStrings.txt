@@ -34,3 +34,12 @@ You inhale.
 A whiff of fresh air?
 
 It was only a trace, but that was enough. There must be an exit here somewhere..."
+
+Start of lvl 2:
+
+"Too simple. Too easy. You aren't out of the woods yet.
+
+Fire greets you from a pit below, but once again a trace of fresh air manages to
+sneak its way through to you.
+
+You must continue."
